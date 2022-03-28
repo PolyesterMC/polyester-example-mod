@@ -2,6 +2,8 @@
 
 The (unofficial) [Fabric](https://fabricmc.net/) home for Alpha - if you want the newer versions see [here](https://github.com/FabricMC/fabric-example-mod).
 
+### Note: Mapping is in its very early stages so it is barely useable for realistic modding.
+
 ## Setup
 1. Edit build.gradle and mod.json to suit your needs.
     * The "mixins" object can be removed from mod.json if you do not need to use mixins.
