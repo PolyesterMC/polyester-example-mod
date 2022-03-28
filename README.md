@@ -1,6 +1,6 @@
-# Textile Example Mod
+# Polyester Example Mod
 
-The (unofficial) [Fabric](https://fabricmc.net/) home for infdev - if you want the newer versions see [here](https://github.com/FabricMC/fabric-example-mod).
+The (unofficial) [Fabric](https://fabricmc.net/) home for Alpha - if you want the newer versions see [here](https://github.com/FabricMC/fabric-example-mod).
 
 ## Setup
 1. Edit build.gradle and mod.json to suit your needs.
