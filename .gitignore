@@ -1,0 +1,12 @@
+#Gradle
+.gradle
+build
+
+#Eclipse
+.settings
+.project
+.classpath
+*.launch
+bin
+run
+/.idea/

@@ -1,0 +1,97 @@
+plugins {
+    id 'fabric-loom' version '0.12-SNAPSHOT'
+	id 'maven-publish'
+}
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+
+archivesBaseName = project.archives_base_name
+version = project.mod_version
+group = project.maven_group
+
+repositories {
+    maven {
+        name = "Jitpack"
+        url "https://jitpack.io/"
+    }
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:a1.0.4"
+
+    mappings files("linen-a1.0.4+build22d087-v2.jar")
+
+    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+}
+
+//configurations.all {
+//     resolutionStrategy {
+//         dependencySubstitution {
+//             substitute module('org.lwjgl.lwjgl:lwjgl_util:2.9.1-nightly-20130708-debug3') with module('org.lwjgl.lwjgl:lwjgl_util:2.9.4-nightly-20150209')
+//             substitute module('org.lwjgl.lwjgl:lwjgl:2.9.1-nightly-20130708-debug3') with module('org.lwjgl.lwjgl:lwjgl:2.9.4-nightly-20150209')
+//             substitute module('net.java.jinput:jinput:2.0.5') with module('net.java.jinput:jinput:2.0.9')
+//         }
+//         force 'org.lwjgl.lwjgl:lwjgl-platform:2.9.4-nightly-20150209'
+//         force 'net.java.jinput:jinput:2.0.9'
+//     }
+//}
+
+loom {
+    setIntermediaryUrl('https://github.com/PolyesterMC/alpha-intermediary/blob/main/intermediary-a1.0.4-v2.jar?raw=true')
+
+    clientOnlyMinecraftJar()
+
+    runs {
+        client {
+            vmArgs "-Dfabric.gameVersion=${project.minecraft_version}"
+        }
+    }
+}
+
+processResources {
+    inputs.property "version", project.version
+
+	filesMatching("fabric.mod.json") {
+		expand "version": project.version
+	}
+}
+
+// ensure that the encoding is set to UTF-8, no matter what the system default is
+// this fixes some edge cases with special characters not displaying correctly
+// see http://yodaconditions.net/blog/fix-for-java-file-encoding-problems-with-gradle.html
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = "UTF-8"
+
+    it.options.release = 8
+}
+
+java {
+	// Loom will automatically attach sourcesJar to a RemapSourcesJar task and to the "build" task
+	// if it is present.
+	// If you remove this line, sources will not be generated.
+	withSourcesJar()
+}
+
+jar {
+	from("LICENSE") {
+		rename { "${it}_${project.archivesBaseName}"}
+	}
+}
+
+// configure the maven publication
+publishing {
+	publications {
+		mavenJava(MavenPublication) {
+			from components.java
+		}
+	}
+
+	// See https://docs.gradle.org/current/userguide/publishing_maven.html for information on how to set up publishing.
+	repositories {
+		// Add repositories to publish to here.
+		// Notice: This block does NOT have the same function as the block in the top level.
+		// The repositories here will be used for publishing your artifact, not for
+		// retrieving dependencies.
+	}
+}
