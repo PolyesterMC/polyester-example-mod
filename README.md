@@ -28,3 +28,6 @@ Once your mod is complete and ready for use it can be compiled and reobfuscated 
 
 ## License
 This template is available under the MIT license. Feel free to learn from it and incorporate it in your own projects.
+
+## Linux Support
+Please use the runClient task instead of using the Minecraft Development Plugin. (Also find a compatible JDK, as some libraries may be missing due to the versions's age)
