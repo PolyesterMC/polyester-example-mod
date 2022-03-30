@@ -20,7 +20,7 @@ repositories {
 dependencies {
     minecraft "com.mojang:minecraft:a1.0.4"
 
-    mappings files("linen-a1.0.4+build22d087-v2.jar")
+    mappings files("linen-a1.0.4+build22d089-v2.jar")
 
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 }
