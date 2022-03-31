@@ -18,8 +18,9 @@ repositories {
 }
 
 dependencies {
-    minecraft "com.mojang:minecraft:a1.0.4"
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
 
+    // New mappings may have been released! Check https://github.com/PolyesterMC/Linen/releases for new releases.
     mappings "com.github.PolyesterMC:Linen:build.01:v2"
 
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
@@ -38,7 +39,9 @@ dependencies {
 //}
 
 loom {
-    setIntermediaryUrl('https://github.com/PolyesterMC/alpha-intermediary/blob/main/intermediary-a1.0.4-v2.jar?raw=true')
+
+    // The intermediary file for alpha
+    setIntermediaryUrl("https://github.com/PolyesterMC/alpha-intermediary/blob/main/intermediary-${project.minecraft_version}v2.jar?raw=true")
 
     clientOnlyMinecraftJar()
 
