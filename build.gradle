@@ -15,14 +15,17 @@ repositories {
         name = "Jitpack"
         url "https://jitpack.io/"
     }
+
+    mavenCentral()
 }
 
 dependencies {
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
 
     // New mappings may have been released! Check https://github.com/PolyesterMC/Linen/releases for new releases.
-    mappings "com.github.PolyesterMC:Linen:build.02:v2"
+    mappings "com.github.PolyesterMC:Linen:build.04:v2"
 
+    implementation "org.apache.logging.log4j:log4j-core:2.17.0"
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 }
 

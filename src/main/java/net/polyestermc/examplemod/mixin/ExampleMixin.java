@@ -1,5 +1,7 @@
 package net.polyestermc.examplemod.mixin;
 
+import net.polyestermc.examplemod.ExampleMod;
+import org.apache.logging.log4j.Level;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -11,6 +13,6 @@ import net.minecraft.client.MinecraftClient;
 public abstract class ExampleMixin {
     @Inject(method = "<init>", at = @At("RETURN"))
     private void onInit(CallbackInfo ci) {
-        System.out.println("Hello from ExampleMod!");
+        ExampleMod.log(Level.INFO, "This is printed by an example mixin!");
     }
 }
